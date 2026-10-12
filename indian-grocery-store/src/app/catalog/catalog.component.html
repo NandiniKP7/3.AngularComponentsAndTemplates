@@ -1,0 +1,16 @@
+<ul>
+  @for (
+    prod of products;
+    track prod.id;
+    let indx = $index, count = $count, odd = $odd, first = $first
+  ) {
+    <li [class.alt]="odd" [class.top]="first">
+      <div>Product: {{ indx + 1 }} of {{ count }}</div>
+      <store-product-details [product]="prod"></store-product-details>
+    </li>
+  } @empty {
+    <li class="top empty-state">
+      <div>No products found in this store.</div>
+    </li>
+  }
+</ul>

@@ -1,57 +1,27 @@
-@let p=product();
-@let discountedPrice=p.price * (1-p.discount)|currency;
+@let p = product();
+@let discountedPrice = p.price * (1 - p.discount) | currency: 'INR';
 
-  <img [src]="getImageUrl(p)" [alt]="p.name"/>
-  <div class="details">
-    <div>
-      <h2>{{p.name}}</h2>
-      <p>{{p.description}}</p>
-      <p>Category Type: 
-        @switch(p.category){
-          @case("Lentils")
-          {
-            Lentil
-          }
-          @case("Beans")
-          {
-            Bean
-          }
-          @case("Grains")
-          {
-            Grain
-          }
-          @default {
-            {{p.category}}
-          }
-        }</p>
-      @if(p.productNotes; as notes){
-        <p>ProductNotes:{{notes}}</p>
-      }
-      <p></p>
-      <p> AvaliableInventory:{{availableInventory()}}
-      @if(availableInventory()==1)
-      {
-        <span class="pill orange">Only 1 product left!</span>
-      }@else if(availableInventory()<1)
-      {
-        <span class="pill red">Out of stock!!</span>
-      }
-      @else if(availableInventory()<5)
-      {
-        <span class="pill yellow">Ony Few Left !</span>
-      }
-      @else 
-      {
-        <span class="pill green">Get Yours Today !</span>
-      }
-      </p>
-      
-    </div>
-  </div>
-  <div class="price">
-     <p [ngClass]="getPricesClasses()">${{p.price}}</p>
-    @if(p.discount>0){
-      <p class="discount">{{discountedPrice}}(Sale)</p>
+<img [src]="getImageUrl(p)" [alt]="p.name" />
+<div class="details">
+  <div>
+    <h2>{{ p.name }}</h2>
+    <p>{{ p.description }}</p>
+    <p> Category:{{p.category|categoryToPipeType:false}}
+    </p>
+    @if (p.productNotes; as notes) {
+      <p>ProductNotes:{{ notes }}</p>
     }
-    <button class="cta" (click)="addToCart($event)">Buy</button>
+    <p></p>
+    <p>
+      AvaliableInventory:{{ availableInventory() }}
+      <span class="pill orange">{{availableInventory()|i18nPlural:inventoryMap}}</span>
+    </p>
   </div>
+</div>
+<div class="price">
+  <p [ngClass]="getPricesClasses()">${{ p.price }}</p>
+  @if (p.discount > 0) {
+    <p class="discount">{{ discountedPrice }}(Sale)</p>
+  }
+  <button class="cta" (click)="addToCart($event)">Buy</button>
+</div>

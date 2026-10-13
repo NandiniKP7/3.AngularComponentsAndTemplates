@@ -14,15 +14,30 @@ li {
 .alt {
   background-color: lightgrey;
 }
-.filters{
-  margin-top: 10px;
-  display:flex;
+
+.filters {
+  margin: 20px 0;
+  display: flex;
   justify-content: center;
-  gap:20px
+  gap: 20px;
 }
-.filters button{
- width :120px;
+
+.filters button {
+  width: 120px;
+  height: 52px;
+  border: none;
+  border-radius: 5px;
+  background-color: #58acd2;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
 }
+
+.filters button:hover {
+  background-color: #4699bf;
+}
+
 .top {
   border-top: none;
 }

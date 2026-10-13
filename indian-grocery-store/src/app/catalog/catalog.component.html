@@ -1,21 +1,30 @@
-
 <div class="filters">
-  <button (click)="categoryFilter='lentils'">Lentils</button>
-  <button (click)="categoryFilter='grains'">Grains</button>
-  <button (click)="categoryFilter='proteins'">Protein</button>
-  <button (click)="categoryFilter='beans'">Beans</button>
-  <button (click)="categoryFilter='addProduct'">Add new Product</button>
-  <ul>
+  <button (click)="categoryFilter = 'lentils'">Lentils</button>
+  <button (click)="categoryFilter = 'grains'">Grains</button>
+  <button (click)="categoryFilter = 'proteins'">Protein</button>
+  <button (click)="categoryFilter = 'bean'">Beans</button>
+  <button (click)="categoryFilter = null">All</button>
+  <button (click)="addProdict()">Add New Product</button>
+</div>
+
+<ul>
   @for (
-    prod of products| categoryTofilterPipe:categoryFilter;
+    prod of products | categoryTofilterPipe:categoryFilter;
     track prod.id;
-    let indx = $index, count = $count, odd = $odd, first = $first
+    let indx = $index,
+        count = $count,
+        odd = $odd,
+        first = $first
   ) {
     <li [class.alt]="odd" [class.top]="first">
       <div>Product: {{ indx + 1 }} of {{ count }}</div>
-      <store-product-details [product]="prod"></store-product-details>
+
+      <store-product-details
+        [product]="prod">
+      </store-product-details>
     </li>
-  } @empty {
+  }
+  @empty {
     <li class="top empty-state">
       <div>No products found in this store.</div>
     </li>

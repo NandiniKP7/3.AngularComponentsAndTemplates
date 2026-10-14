@@ -8,7 +8,9 @@
 <ul class="cart">
     @for(prod of cartItems(); track prod.id){
     <li>
-    <store-cart-items [product]="prod"/>
+    <store-product-details [product]="prod" (removeFromCart)="removeFromCart($event)">
+    
+    </store-product-details>
     </li>
 }@empty {
     <h2> You have no items in your cart</h2>

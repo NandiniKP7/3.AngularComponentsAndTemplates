@@ -20,7 +20,7 @@
       <div>Product: {{ indx + 1 }} of {{ count }}</div>
 
       <store-product-details
-        [product]="prod">
+        [product]="prod" (addToCart)="addToCart($event)">
       </store-product-details>
     </li>
   }

@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
-import { CartItemComponent } from '../cart-items/cart-items.component';
 import { CartService } from '../cart.service';
 import { IProduct } from '../product.model';
+import { ProductDetailsComponent } from '../product-details/product-details.component';
 @Component({
   selector: 'store-cart',
-  imports: [CartItemComponent],
+  imports: [ProductDetailsComponent],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css',
 })
@@ -14,5 +14,9 @@ export class CartComponent {
   
   constructor(private cartService:CartService){
     this.cartItems=this.cartService.cart
+  }
+
+  removeFromCart(prod:IProduct){
+   this.cartService.removeItemsFromCart(prod)
   }
 }

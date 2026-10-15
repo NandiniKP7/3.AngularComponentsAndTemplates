@@ -1,23 +1,22 @@
-@let hasCartItems= cartItems().length>0;
+@let hasCartItems = cartItems().length > 0;
 
 <h1 class="header">Your Cart</h1>
-@if(hasCartItems){
-<button (click)="checkout.scrollIntoView({behavior:'smooth'})">Proceed to checkout</button>
+@if (hasCartItems) {
+  <button (click)="checkout.scrollIntoView({ behavior: 'smooth' })">Proceed to checkout</button>
 }
 
 <ul class="cart">
-    @for(prod of cartItems(); track prod.id){
+  @for (prod of cartItems(); track prod.id) {
     <li>
-    <store-product-details [product]="prod" (removeFromCart)="removeFromCart($event)">
-    
-    </store-product-details>
+      <store-product-details [product]="prod" mode="cart" (removeFromCart)="removeFromCart($event)">
+      </store-product-details>
     </li>
-}@empty {
-    <h2> You have no items in your cart</h2>
-}
+  } @empty {
+    <h2>You have no items in your cart</h2>
+  }
 </ul>
 <span #checkout>
-@if(hasCartItems) {
-<button class="cta">Checkout</button>
-}
+  @if (hasCartItems) {
+    <button class="cta">Checkout</button>
+  }
 </span>

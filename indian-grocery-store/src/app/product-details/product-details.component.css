@@ -2,10 +2,13 @@
   display: grid;
 
   /* image | product information | price */
-  grid-template-columns: 180px 1fr 180px;
+  grid-template-columns: 180px minmax(0, 1fr) 180px;
 
   align-items: center;
   gap: 30px;
+
+  width: 100%;
+  box-sizing: border-box;
 
   padding: 20px 25px;
   border-bottom: 2px solid #999;
@@ -21,8 +24,7 @@
 }
 
 .details {
-  display: flex;
-  align-items: center;
+  min-width: 0;
 }
 
 .details h2 {
@@ -68,34 +70,37 @@
   text-decoration: line-through;
   font-size: 18px;
 }
+
 .discount {
   margin: 5px 0;
   color: #d25ca1;
   font-weight: 600;
   font-size: 22px;
 }
+
 .pill {
-  display:inline-block;
-  padding:4px 12px;
-  border-radius:999px;
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
   background: #ccc;
 }
-.red{
-  background:red;
-  color:white;
+
+.red {
+  background: red;
+  color: white;
 }
 
-.yellow{
-  background :yellow;
-  color:gray;
-
+.yellow {
+  background: yellow;
+  color: gray;
 }
-.green{
-  background :green;
+
+.green {
+  background: green;
   color: wheat;
 }
 
-.orange{
-  background :orange;
+.orange {
+  background: orange;
   color: black;
 }

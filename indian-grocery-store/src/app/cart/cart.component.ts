@@ -12,6 +12,7 @@ export class CartComponent {
 
   cartItems=signal<IProduct[]>([])
   
+  
   constructor(private cartService:CartService){
     this.cartItems=this.cartService.cart
   }
